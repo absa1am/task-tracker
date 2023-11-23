@@ -11,7 +11,7 @@
         <base>
         <title>Home - Task Tracker</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="public/bootstrap-5.3.2-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="../public/bootstrap-5.3.2-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <!-- navigation section -->
@@ -27,7 +27,7 @@
                             <a class="nav-link text-white" href="/">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-white" href="/task">My Tsks</a>
+                            <a class="nav-link text-white" href="/task">My Tasks</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/todo">To Do</a>
@@ -90,6 +90,6 @@
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="public/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
+        <script src="../public/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     </body>
 </html>
