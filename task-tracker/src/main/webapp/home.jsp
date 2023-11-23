@@ -10,29 +10,30 @@
     <head>
         <base>
         <title>Home - Task Tracker</title>
-        <link href="public/bootstrap-5.3.2-dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="public/bootstrap-5.3.2-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         <!-- navigation section -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">TASK TRACKER</a>
+                <a class="navbar-brand" href="/">TASK TRACKER</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav nav-underline">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Home</a>
+                            <a class="nav-link text-white" href="/">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-white" href="#">My Tasks</a>
+                            <a class="nav-link text-white" href="/task">My Tsks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Progress</a>
+                            <a class="nav-link text-white" href="/todo">To Do</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">About Us</a>
+                            <a class="nav-link text-white" href="/strength">Strength</a>
                         </li>
                     </ul>
                 </div>
@@ -88,6 +89,7 @@
             </div>
         </footer>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="public/bootstrap-5.3.2-dist/js/bootstrap.js"></script>
     </body>
 </html>
