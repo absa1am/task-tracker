@@ -27,10 +27,10 @@
         <div class="nav-item nav-underline justify-content-end">
             <ul class="navbar-nav nav-underline">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Register</a>
+                    <a class="nav-link text-white" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Login</a>
+                    <a class="nav-link text-white" href="/login">Login</a>
                 </li>
             </ul>
         </div>
