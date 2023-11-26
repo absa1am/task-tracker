@@ -33,6 +33,14 @@
                             <textarea class="form-control" rows="5" name="text" placeholder="Your task lists"></textarea>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" class="form-control" name="startDate">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="endDate">End Date</label>
+                            <input type="date" class="form-control" name="endDate">
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="taskStatus" class="form-label">Task Status</label>
                             <select class="form-select" name="taskStatus">
                                 <option value="Pending">Pending</option>

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ToDoServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/todo.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/todo.jsp");
 
         requestDispatcher.forward(request, response);
     }

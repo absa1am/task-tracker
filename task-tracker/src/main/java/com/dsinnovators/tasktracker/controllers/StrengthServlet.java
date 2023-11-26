@@ -13,7 +13,7 @@ import java.io.IOException;
 public class StrengthServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/strength.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/strength.jsp");
 
         requestDispatcher.forward(request, response);
     }
