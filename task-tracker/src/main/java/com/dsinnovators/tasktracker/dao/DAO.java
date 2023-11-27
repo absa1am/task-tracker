@@ -9,11 +9,10 @@ public class DAO {
     private String username = "postgres";
     private String password = "123456";
 
-    public Connection getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection(url, username, password);
+    public Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
 
-        System.out.println(connection.isClosed());
-        System.out.println(connection.isValid(0));
+        Connection connection = DriverManager.getConnection(url, username, password);
         
         return connection;
     }
