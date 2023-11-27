@@ -55,10 +55,10 @@
                 <dib class="col-lg-4 justify-content-center"></dib>
                 <div class="col-lg-4 justify-content-center">
                     <h2 class="text-center">New Status</h2>
-                    <form action="#" method="post">
+                    <form action="add-status" method="post">
                         <div class="mb-3 mt-3">
-                            <label for="task">Status</label>
-                            <input type="text" class="form-control" placeholder="Your status" name="status">
+                            <label for="status">Status</label>
+                            <input type="text" id="status" class="form-control" placeholder="Your status" name="status">
                         </div>
                         <button type="submit" class="btn btn-primary">Create Status</button>
                     </form>

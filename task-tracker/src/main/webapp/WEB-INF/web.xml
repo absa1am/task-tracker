@@ -43,4 +43,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+    
+    <!-- URL mapping for add-status -->
+    <servlet>
+        <servlet-name>StatusServlet</servlet-name>
+        <servlet-class>com.dsinnovators.tasktracker.controllers.StatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StatusServlet</servlet-name>
+        <url-pattern>/add-status</url-pattern>
+    </servlet-mapping>
 </web-app>
