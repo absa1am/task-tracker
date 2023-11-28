@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: DSi
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <base>
@@ -21,7 +23,7 @@
         <!-- main section -->
         <div class="container mt-5 mb-5">
             <div class="row">
-                <div class="col-lg-4 justify-content-center">
+                <div class="col-lg-4">
                     <h2 class="text-center">New Tasks</h2>
                     <form action="#" method="post">
                         <div class="mb-3 mt-3">
@@ -42,18 +44,34 @@
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="taskStatus" class="form-label">Task Status</label>
-                            <select class="form-select" name="taskStatus">
-                                <option value="Pending">Pending</option>
-                                <option value="In Progress">Progressing</option>
-                                <option value="Completed">Completed</option>
+                            <select class="form-select" id="taskStatus" name="taskStatus">
+                                <c:forEach var="item" items="${status}">
+                                    <option value="${item.getStatus()}">${item.getStatus()}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Create Task</button>
                     </form>
                 </div>
-                <dib class="col-lg-4 justify-content-center"></dib>
-                <div class="col-lg-4 justify-content-center">
+                <dib class="col-lg-4">
+                    <h2 class="text-center">Status List</h2>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Status</th>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <c:forEach var="item" items="${status}">
+                                <tr>
+                                    <td class="text-center"><c:out value="${item.getId()}" /></td>
+                                    <td class="text-center"><c:out value="${item.getStatus()}" /></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </dib>
+                <div class="col-lg-4">
                     <h2 class="text-center">New Status</h2>
                     <form action="add-status" method="post">
                         <div class="mb-3 mt-3">

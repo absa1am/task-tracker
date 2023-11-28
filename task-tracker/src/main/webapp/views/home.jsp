@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: DSi
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <base>
@@ -27,24 +29,18 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="text-center">#</th>
-                                <th scope="col" class="text-center">Task</th>
                                 <th scope="col" class="text-center">Status</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <tr>
-                                <th scope="row" class="text-center">1</th>
-                                <td class="text-center">Mark</td>
-                                <td class="text-center">Otto</td>
-                                <td class="text-center">View | Edit | Delete |</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-center">2</th>
-                                <td class="text-center">Mark</td>
-                                <td class="text-center">Otto</td>
-                                <td class="text-center">View | Edit | Delete |</td>
-                            </tr>
+                            <c:forEach var="s" items="${status}">
+                                <tr>
+                                    <th scope="row" class="text-center"><c:out value="${s.getId()}" /></th>
+                                    <td class="text-center"><c:out value="${s.getStatus()}" /></td>
+                                    <td class="text-center">View | Edit | Delete |</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
