@@ -39,12 +39,16 @@
                         <tbody class="table-group-divider">
                             <c:forEach var="item" items="${tasks}">
                                 <tr>
-                                    <th class="text-center"><c:out value="${item.getId()}"/></th>
-                                    <th class="text-center"><c:out value="${item.getName()}"/></th>
-                                    <th class="text-center"><c:out value="${item.getStatus()}"/></th>
-                                    <th class="text-center"><c:out value="${item.getStartDate()}"/></th>
-                                    <th class="text-center"><c:out value="${item.getEndDate()}"/></th>
-                                    <th class="text-center">Edit | Delete | View</th>
+                                    <td class="text-center"><c:out value="${item.getId()}"/></td>
+                                    <td class="text-center"><c:out value="${item.getName()}"/></td>
+                                    <td class="text-center"><c:out value="${item.getStatus()}"/></td>
+                                    <td class="text-center"><c:out value="${item.getStartDate()}"/></td>
+                                    <td class="text-center"><c:out value="${item.getEndDate()}"/></td>
+                                    <td class="text-center">
+                                        <a class="btn btn-outline-secondary" href="edit-todo?id=${item.getId()}"><i class="bi bi-pencil-square"></i></a>
+                                        <a class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                                        <a class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

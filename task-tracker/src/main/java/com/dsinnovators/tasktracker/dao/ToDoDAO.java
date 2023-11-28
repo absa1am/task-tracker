@@ -33,6 +33,33 @@ public class ToDoDAO extends DAO {
         }
     }
 
+    public Task get(int id) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(selectByIdSQL);
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Task task = new Task();
+
+                task.setId(resultSet.getInt("id"));
+                task.setName(resultSet.getString("name"));
+                task.setDescription(resultSet.getString("description"));
+                task.setStartDate(resultSet.getDate("start_date"));
+                task.setStartDate(resultSet.getDate("end_date"));
+                task.setStatus(Status.valueOf(resultSet.getString("status")));
+
+                return task;
+            }
+
+            return null;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Task> getAll() {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(selectSQL);
