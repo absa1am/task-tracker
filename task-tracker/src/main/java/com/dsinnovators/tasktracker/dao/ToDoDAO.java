@@ -65,7 +65,7 @@ public class ToDoDAO extends DAO {
                 task.setName(resultSet.getString("name"));
                 task.setDescription(resultSet.getString("description"));
                 task.setStartDate(resultSet.getDate("start_date"));
-                task.setStartDate(resultSet.getDate("end_date"));
+                task.setEndDate(resultSet.getDate("end_date"));
                 task.setStatus(Status.valueOf(resultSet.getString("status")));
 
                 return task;
