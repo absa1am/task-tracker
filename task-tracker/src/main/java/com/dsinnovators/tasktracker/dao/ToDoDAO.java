@@ -33,6 +33,23 @@ public class ToDoDAO extends DAO {
         }
     }
 
+    public void update(String name, String description, Date startDate, Date endDate, Status status, int id) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(updateSQL);
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, description);
+            preparedStatement.setDate(3, startDate);
+            preparedStatement.setDate(4, endDate);
+            preparedStatement.setString(5, String.valueOf(status));
+            preparedStatement.setInt(6, id);
+
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Task get(int id) {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(selectByIdSQL);

@@ -23,7 +23,7 @@
                 <dib class="col-lg-4"></dib>
                 <div class="col-lg-4">
                     <h2 class="text-center">Edit Tasks</h2>
-                    <form action="edit-todo" method="post">
+                    <form action="edit-todo?id=${task.getId()}" method="post">
                         <div class="mb-3 mt-3">
                             <label for="name">Task</label>
                             <input type="text" id="name" class="form-control" placeholder="Your task" name="name" value="${task.getName()}" required>
