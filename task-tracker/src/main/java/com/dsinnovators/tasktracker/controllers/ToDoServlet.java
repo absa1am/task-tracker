@@ -1,6 +1,5 @@
 package com.dsinnovators.tasktracker.controllers;
 
-import com.dsinnovators.tasktracker.dao.StatusDAO;
 import com.dsinnovators.tasktracker.dao.ToDoDAO;
 import com.dsinnovators.tasktracker.models.Status;
 import jakarta.servlet.RequestDispatcher;
@@ -17,10 +16,9 @@ public class ToDoServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/todo.jsp");
 
         try {
-            StatusDAO statusDAO = new StatusDAO();
-            List<Status> statusList = statusDAO.getAll();
+            Status[] status = Status.values();
 
-            request.setAttribute("status", statusList);
+            request.setAttribute("status", status);
 
             requestDispatcher.forward(request, response);
         } catch (Exception e) {
@@ -29,20 +27,18 @@ public class ToDoServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/home.jsp");
-
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         Date startDate = Date.valueOf(request.getParameter("startDate"));
         Date endDate = Date.valueOf(request.getParameter("endDate"));
-        int statusId = Integer.parseInt(request.getParameter("taskStatus"));
+        Status status = Status.valueOf(request.getParameter("taskStatus"));
 
         try {
             ToDoDAO todoDAO = new ToDoDAO();
 
-            todoDAO.insert(name, description, startDate, endDate, statusId);
+            todoDAO.insert(name, description, startDate, endDate, status);
 
-            requestDispatcher.forward(request, response);
+            response.sendRedirect("/");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

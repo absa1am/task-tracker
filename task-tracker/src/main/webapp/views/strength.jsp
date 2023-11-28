@@ -32,7 +32,7 @@
         </div>
 
         <!-- footer section -->
-        <%@include file="layouts/footer.jsp"%>>
+        <%@include file="layouts/footer.jsp"%>
 
         <!-- scripts -->
         <%@include file="layouts/scripts.jsp"%>

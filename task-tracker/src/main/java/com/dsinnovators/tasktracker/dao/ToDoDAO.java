@@ -1,29 +1,31 @@
 package com.dsinnovators.tasktracker.dao;
 
+import com.dsinnovators.tasktracker.models.Status;
 import com.dsinnovators.tasktracker.models.Task;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class ToDoDAO extends DAO {
 
-    private String insertSQL = "INSERT INTO Tasks (name, description, start_date, end_date, status_id) VALUES (?, ?, ?, ?, ?);";
-    private String updateSQL = "UPDATE Tasks SET name = ?, description = ?, start_date = ?, end_date = ? WHERE id = ?;";
+    private String insertSQL = "INSERT INTO Tasks (name, description, start_date, end_date, status) VALUES (?, ?, ?, ?, ?);";
+    private String updateSQL = "UPDATE Tasks SET name = ?, description = ?, start_date = ?, end_date = ?, status = ? WHERE id = ?;";
+    private String deleteSQL = "DELETE FROM Tasks WHERE id = ?";
     private String selectSQL = "SELECT * FROM Tasks;";
     private String selectByIdSQL = "SELECT * FROM Tasks WHERE id = ?;";
 
-    public void insert(String name, String description, Date startDate, Date endDate, int statusId) {
+    public void insert(String name, String description, Date startDate, Date endDate, Status status) {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(insertSQL);
 
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, description);
-            preparedStatement.setDate(3, (java.sql.Date) startDate);
-            preparedStatement.setDate(4, (java.sql.Date) endDate);
-            preparedStatement.setInt(5, statusId);
+            preparedStatement.setDate(3, startDate);
+            preparedStatement.setDate(4, endDate);
+            preparedStatement.setString(5, String.valueOf(status));
 
             preparedStatement.execute();
         } catch (Exception e) {
@@ -45,7 +47,7 @@ public class ToDoDAO extends DAO {
                 task.setDescription(resultSet.getString("description"));
                 task.setStartDate(resultSet.getDate("start_date"));
                 task.setEndDate(resultSet.getDate("end_date"));
-                task.setStatusId(resultSet.getInt("status_id"));
+                task.setStatus(Status.valueOf(resultSet.getString("status")));
 
                 tasks.add(task);
             }

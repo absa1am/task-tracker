@@ -23,6 +23,7 @@
         <!-- main section -->
         <div class="container mt-5 mb-5">
             <div class="row">
+                <dib class="col-lg-4"></dib>
                 <div class="col-lg-4">
                     <h2 class="text-center">New Tasks</h2>
                     <form action="todo" method="post">
@@ -46,7 +47,7 @@
                             <label for="taskStatus" class="form-label">Task Status</label>
                             <select class="form-select" id="taskStatus" name="taskStatus">
                                 <c:forEach var="item" items="${status}">
-                                    <option value="${item.getId()}">${item.getStatus()}</option>
+                                    <option value="${item}">${item}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -54,38 +55,12 @@
                         <button type="submit" class="btn btn-primary">Create Task</button>
                     </form>
                 </div>
-                <dib class="col-lg-4">
-                    <h2 class="text-center">Status List</h2>
-                    <table class="table table-hover table-bordered">
-                        <thead>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">Status</th>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <c:forEach var="item" items="${status}">
-                                <tr>
-                                    <td class="text-center"><c:out value="${item.getId()}" /></td>
-                                    <td class="text-center"><c:out value="${item.getStatus()}" /></td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
-                </dib>
-                <div class="col-lg-4">
-                    <h2 class="text-center">New Status</h2>
-                    <form action="add-status" method="post">
-                        <div class="mb-3 mt-3">
-                            <label for="status">Status</label>
-                            <input type="text" id="status" class="form-control" placeholder="Your status" name="status">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create Status</button>
-                    </form>
-                </div>
+                <div class="col-lg-4"></div>
             </div>
         </div>
 
         <!-- footer section -->
-        <%@include file="layouts/footer.jsp"%>>
+        <%@include file="layouts/footer.jsp"%>
 
         <!-- scripts -->
         <%@include file="layouts/scripts.jsp"%>

@@ -9,7 +9,7 @@ public class Task {
     private String description;
     private Date startDate;
     private Date endDate;
-    private int statusId;
+    private Status status;
 
     public int getId() {
         return id;
@@ -51,11 +51,11 @@ public class Task {
         this.endDate = endDate;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public Status getStatusId() {
+        return status;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
