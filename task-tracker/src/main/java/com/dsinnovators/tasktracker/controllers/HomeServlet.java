@@ -1,15 +1,12 @@
 package com.dsinnovators.tasktracker.controllers;
 
-import com.dsinnovators.tasktracker.dao.StatusDAO;
-import com.dsinnovators.tasktracker.models.Status;
+import com.dsinnovators.tasktracker.dao.ToDoDAO;
+import com.dsinnovators.tasktracker.models.Task;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 public class HomeServlet extends HttpServlet {
@@ -18,10 +15,9 @@ public class HomeServlet extends HttpServlet {
         try {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/home.jsp");
 
-            StatusDAO statusDAO = new StatusDAO();
-            List<Status> status = statusDAO.getAll();
+            List<Task> tasks = (new ToDoDAO()).getAll();
 
-            request.setAttribute("status", status);
+            request.setAttribute("tasks", tasks);
 
             requestDispatcher.forward(request, response);
         } catch (Exception e) {

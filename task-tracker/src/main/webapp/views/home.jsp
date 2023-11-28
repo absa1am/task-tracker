@@ -28,17 +28,23 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center">#</th>
+                                <th scope="col" class="text-center">ID</th>
+                                <th scope="col" class="text-center">Task</th>
                                 <th scope="col" class="text-center">Status</th>
-                                <th scope="col" class="text-center">Action</th>
+                                <th scope="col" class="text-center">Start Date</th>
+                                <th scope="col" class="text-center">End Date</th>
+                                <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <c:forEach var="s" items="${status}">
+                            <c:forEach var="item" items="${tasks}">
                                 <tr>
-                                    <th scope="row" class="text-center"><c:out value="${s.getId()}" /></th>
-                                    <td class="text-center"><c:out value="${s.getStatus()}" /></td>
-                                    <td class="text-center">View | Edit | Delete |</td>
+                                    <th class="text-center"><c:out value="${item.getId()}"/></th>
+                                    <th class="text-center"><c:out value="${item.getName()}"/></th>
+                                    <th class="text-center"><c:out value="${item.getStatusId()}"/></th>
+                                    <th class="text-center"><c:out value="${item.getStartDate()}"/></th>
+                                    <th class="text-center"><c:out value="${item.getEndDate()}"/></th>
+                                    <th class="text-center">Edit | Delete | View</th>
                                 </tr>
                             </c:forEach>
                         </tbody>

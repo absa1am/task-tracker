@@ -25,28 +25,28 @@
             <div class="row">
                 <div class="col-lg-4">
                     <h2 class="text-center">New Tasks</h2>
-                    <form action="#" method="post">
+                    <form action="todo" method="post">
                         <div class="mb-3 mt-3">
-                            <label for="task">Task</label>
-                            <input type="text" class="form-control" placeholder="Your task" name="task">
+                            <label for="name">Task</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your task" name="name">
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="todo">To Do</label>
-                            <textarea class="form-control" rows="5" name="text" placeholder="Your task lists"></textarea>
+                            <label for="description">To Do</label>
+                            <textarea id="description" class="form-control" rows="5" name="description" placeholder="Your task lists"></textarea>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="startDate">Start Date</label>
-                            <input type="date" class="form-control" name="startDate">
+                            <input type="date" id="startDate" class="form-control" name="startDate">
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="endDate">End Date</label>
-                            <input type="date" class="form-control" name="endDate">
+                            <input type="date" id="endDate" class="form-control" name="endDate">
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="taskStatus" class="form-label">Task Status</label>
                             <select class="form-select" id="taskStatus" name="taskStatus">
                                 <c:forEach var="item" items="${status}">
-                                    <option value="${item.getStatus()}">${item.getStatus()}</option>
+                                    <option value="${item.getId()}">${item.getStatus()}</option>
                                 </c:forEach>
                             </select>
                         </div>
