@@ -51,7 +51,7 @@ public class Task {
         this.endDate = endDate;
     }
 
-    public Status getStatusId() {
+    public Status getStatus() {
         return status;
     }
 

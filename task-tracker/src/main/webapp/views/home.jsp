@@ -28,12 +28,12 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center">ID</th>
-                                <th scope="col" class="text-center">Task</th>
-                                <th scope="col" class="text-center">Status</th>
-                                <th scope="col" class="text-center">Start Date</th>
-                                <th scope="col" class="text-center">End Date</th>
-                                <th scope="col" class="text-center">Actions</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Task</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Start Date</th>
+                                <th class="text-center">End Date</th>
+                                <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -41,7 +41,7 @@
                                 <tr>
                                     <th class="text-center"><c:out value="${item.getId()}"/></th>
                                     <th class="text-center"><c:out value="${item.getName()}"/></th>
-                                    <th class="text-center"><c:out value="${item.getStatusId()}"/></th>
+                                    <th class="text-center"><c:out value="${item.getStatus()}"/></th>
                                     <th class="text-center"><c:out value="${item.getStartDate()}"/></th>
                                     <th class="text-center"><c:out value="${item.getEndDate()}"/></th>
                                     <th class="text-center">Edit | Delete | View</th>
