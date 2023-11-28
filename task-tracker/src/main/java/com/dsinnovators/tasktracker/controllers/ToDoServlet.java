@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.sql.Date;
-import java.util.List;
 
 public class ToDoServlet extends HttpServlet {
 
@@ -27,13 +26,18 @@ public class ToDoServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
-        Date startDate = Date.valueOf(request.getParameter("startDate"));
-        Date endDate = Date.valueOf(request.getParameter("endDate"));
-        Status status = Status.valueOf(request.getParameter("taskStatus"));
-
         try {
+            // Checking validity of data
+            if (request.getParameter("name").isBlank() || request.getParameter("startDate").isBlank() || request.getParameter("endDate").isBlank())
+                request.getRequestDispatcher("views/todo.jsp").forward(request, response);
+
+            // Collecting parameter from form-body
+            String name = request.getParameter("name");
+            String description = request.getParameter("description");
+            Date startDate = Date.valueOf(request.getParameter("startDate"));
+            Date endDate = Date.valueOf(request.getParameter("endDate"));
+            Status status = Status.valueOf(request.getParameter("taskStatus"));
+
             ToDoDAO todoDAO = new ToDoDAO();
 
             todoDAO.insert(name, description, startDate, endDate, status);

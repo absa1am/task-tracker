@@ -29,7 +29,7 @@
                     <form action="todo" method="post">
                         <div class="mb-3 mt-3">
                             <label for="name">Task</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your task" name="name">
+                            <input type="text" id="name" class="form-control" placeholder="Your task" name="name" required>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="description">To Do</label>
@@ -37,11 +37,11 @@
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="startDate">Start Date</label>
-                            <input type="date" id="startDate" class="form-control" name="startDate">
+                            <input type="date" id="startDate" class="form-control" name="startDate" required>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="endDate">End Date</label>
-                            <input type="date" id="endDate" class="form-control" name="endDate">
+                            <input type="date" id="endDate" class="form-control" name="endDate" required>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="taskStatus" class="form-label">Task Status</label>
