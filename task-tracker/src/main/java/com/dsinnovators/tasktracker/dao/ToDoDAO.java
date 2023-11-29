@@ -51,8 +51,7 @@ public class ToDoDAO extends DAO {
     }
 
     public Task get(int id) {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(selectByIdSQL);
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(selectByIdSQL)) {
 
             preparedStatement.setInt(1, id);
 
@@ -78,8 +77,7 @@ public class ToDoDAO extends DAO {
     }
 
     public List<Task> getAll() {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(selectSQL);
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(selectSQL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             List<Task> tasks = new ArrayList<>();
 
