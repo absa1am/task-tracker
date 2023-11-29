@@ -25,6 +25,13 @@
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 justify-content-center">
                     <h2 class="text-center">My Tasks</h2>
+                    <c:if test="${sessionScope.containsKey('danger')}">
+                        <div class="alert alert-danger" role="alert">
+                            <div>${sessionScope.get("danger")}</div>
+                        </div>
+                        ${sessionScope.remove("danger")}
+                    </c:if>
+
                     <c:if test="${sessionScope.containsKey('success')}">
                         <div class="alert alert-success" role="alert">
                             <div>${sessionScope.get("success")}</div>
@@ -52,7 +59,10 @@
                                     <td class="text-center"><c:out value="${item.getEndDate()}"/></td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-secondary" href="edit-todo?id=${item.getId()}"><i class="bi bi-pencil-square"></i></a>
-                                        <a class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                                        <form action="delete-todo" method="post" class="form-check-inline m-0">
+                                            <input type="hidden" name="id" class="form-control" value="${item.getId()}">
+                                            <button type="submit" class="btn btn-outline-danger btn"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
                                         <a class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a>
                                     </td>
                                 </tr>

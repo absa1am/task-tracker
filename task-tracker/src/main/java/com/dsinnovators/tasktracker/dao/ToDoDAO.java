@@ -18,9 +18,7 @@ public class ToDoDAO extends DAO {
     private String selectByIdSQL = "SELECT * FROM Tasks WHERE id = ?;";
 
     public void insert(String name, String description, Date startDate, Date endDate, Status status) {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(insertSQL);
-
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(insertSQL)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, description);
             preparedStatement.setDate(3, startDate);
@@ -34,15 +32,23 @@ public class ToDoDAO extends DAO {
     }
 
     public void update(String name, String description, Date startDate, Date endDate, Status status, int id) {
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(updateSQL);
-
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(updateSQL)) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, description);
             preparedStatement.setDate(3, startDate);
             preparedStatement.setDate(4, endDate);
             preparedStatement.setString(5, String.valueOf(status));
             preparedStatement.setInt(6, id);
+
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(int id) {
+        try (PreparedStatement preparedStatement = getConnection().prepareStatement(deleteSQL)) {
+            preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
         } catch (Exception e) {
