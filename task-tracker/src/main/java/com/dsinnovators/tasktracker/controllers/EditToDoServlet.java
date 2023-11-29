@@ -25,11 +25,9 @@ public class EditToDoServlet extends HttpServlet {
                 request.setAttribute("status", Status.values());
 
                 requestDispatcher.forward(request, response);
-            }
-
-            response.sendError(404, "The task not found");
+            } else response.sendError(404, "The task not found");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong in server and resolved.");
         }
     }
 
@@ -53,14 +51,15 @@ public class EditToDoServlet extends HttpServlet {
                 request.getSession().setAttribute("success", "Task updated successfully.");
 
                 response.sendRedirect("/");
+            } else { // else is needed here otherwise the code will have bug
+                // Alert for unsuccessful operation
+                request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
+
+                response.sendRedirect("/edit-todo?id=" + Integer.parseInt(request.getParameter("id")));
             }
-
-            // Alert for unsuccessful operation
-            request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
-
-            response.sendRedirect("/edit-todo?id=" + Integer.parseInt(request.getParameter("id")));
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            System.out.println("Something went wrong in server and resolved.");
         }
     }
 

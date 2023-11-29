@@ -33,6 +33,16 @@
         <servlet-name>EditToDoServlet</servlet-name>
         <url-pattern>/edit-todo</url-pattern>
     </servlet-mapping>
+
+    <!-- URL mapping for edit to-do page -->
+    <servlet>
+        <servlet-name>DeleteToDoServlet</servlet-name>
+        <servlet-class>com.dsinnovators.tasktracker.controllers.DeleteToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteToDoServlet</servlet-name>
+        <url-pattern>/delete-todo</url-pattern>
+    </servlet-mapping>
     
     <!-- URL mapping for login -->
     <servlet>

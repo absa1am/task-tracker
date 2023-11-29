@@ -21,7 +21,8 @@ public class HomeServlet extends HttpServlet {
 
             requestDispatcher.forward(request, response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // As I have not implemented error logger, so I'm not showing the exception message directly
+            System.out.println("Something went wrong and resolved in internal server.");
         }
     }
 

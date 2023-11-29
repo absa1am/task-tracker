@@ -22,7 +22,7 @@ public class ToDoServlet extends HttpServlet {
 
             requestDispatcher.forward(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong and resolved in internal server.");
         }
     }
 
@@ -48,14 +48,14 @@ public class ToDoServlet extends HttpServlet {
                 request.getSession().setAttribute("success", "Task created successfully.");
 
                 response.sendRedirect("/");
+            } else {
+                // Alert message for unsuccessful operation
+                request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
+
+                response.sendRedirect("/todo");
             }
-
-            // Alert message for unsuccessful operation
-            request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
-
-            requestDispatcher.forward(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Something went wrong and resolved in internal server.");
         }
     }
 
