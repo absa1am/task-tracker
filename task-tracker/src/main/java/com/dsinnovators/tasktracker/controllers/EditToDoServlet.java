@@ -13,11 +13,9 @@ import java.sql.Date;
 public class EditToDoServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/edit-todo.jsp");
-
         try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/edit-todo.jsp");
             ToDoDAO toDoDAO = new ToDoDAO();
 
             Task task = toDoDAO.get(id);
@@ -31,31 +29,38 @@ public class EditToDoServlet extends HttpServlet {
 
             response.sendError(404, "The task not found");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
             // Validation
-            if (request.getParameter("name").isBlank() || request.getParameter("startDate").isBlank() || request.getParameter("endDate").isBlank())
-                request.getRequestDispatcher("views/todo.jsp").forward(request, response);
+            if (!request.getParameter("name").isBlank() && !request.getParameter("startDate").isBlank() && !request.getParameter("endDate").isBlank()) {
+                // Collecting data from form
+                int id = Integer.parseInt(request.getParameter("id"));
+                String name = request.getParameter("name");
+                String description = request.getParameter("description");
+                Date startDate = Date.valueOf(request.getParameter("startDate"));
+                Date endDate = Date.valueOf(request.getParameter("endDate"));
+                Status status = Status.valueOf(request.getParameter("taskStatus"));
 
-            // Collecting data from form
-            int id = Integer.parseInt(request.getParameter("id"));
-            String name = request.getParameter("name");
-            String description = request.getParameter("description");
-            Date startDate = Date.valueOf(request.getParameter("startDate"));
-            Date endDate = Date.valueOf(request.getParameter("endDate"));
-            Status status = Status.valueOf(request.getParameter("taskStatus"));
+                ToDoDAO toDoDAO = new ToDoDAO();
 
-            ToDoDAO toDoDAO = new ToDoDAO();
+                toDoDAO.update(name, description, startDate, endDate, status, id);
 
-            toDoDAO.update(name, description, startDate, endDate, status, id);
+                // Alert message for successful operation
+                request.getSession().setAttribute("success", "Task updated successfully.");
 
-            response.sendRedirect("/");
+                response.sendRedirect("/");
+            }
+
+            // Alert for unsuccessful operation
+            request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
+
+            response.sendRedirect("/edit-todo?id=" + Integer.parseInt(request.getParameter("id")));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

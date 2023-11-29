@@ -25,6 +25,12 @@
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 justify-content-center">
                     <h2 class="text-center">My Tasks</h2>
+                    <c:if test="${sessionScope.containsKey('success')}">
+                        <div class="alert alert-success" role="alert">
+                            <div>${sessionScope.get("success")}</div>
+                        </div>
+                        ${sessionScope.remove("success")}
+                    </c:if>
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>

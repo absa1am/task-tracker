@@ -26,6 +26,12 @@
                 <dib class="col-lg-4"></dib>
                 <div class="col-lg-4">
                     <h2 class="text-center">New Tasks</h2>
+                    <c:if test="${sessionScope.containsKey('danger')}">
+                        <div class="alert alert-danger" role="alert">
+                            <div>${sessionScope.get("danger")}</div>
+                        </div>
+                        ${sessionScope.remove("danger")}
+                    </c:if>
                     <form action="todo" method="post">
                         <div class="mb-3 mt-3">
                             <label for="name">Task</label>

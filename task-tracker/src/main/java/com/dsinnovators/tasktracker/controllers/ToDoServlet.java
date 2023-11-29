@@ -15,36 +15,47 @@ public class ToDoServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/todo.jsp");
 
         try {
+            // Getting the all status values for showing as option
             Status[] status = Status.values();
 
             request.setAttribute("status", status);
 
             requestDispatcher.forward(request, response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/todo.jsp");
+
             // Checking validity of data
-            if (request.getParameter("name").isBlank() || request.getParameter("startDate").isBlank() || request.getParameter("endDate").isBlank())
-                request.getRequestDispatcher("views/todo.jsp").forward(request, response);
+            if (!request.getParameter("name").isBlank() && !request.getParameter("startDate").isBlank() && !request.getParameter("endDate").isBlank()) {
+                // Collecting parameter from form-body
+                String name = request.getParameter("name");
+                String description = request.getParameter("description");
+                Date startDate = Date.valueOf(request.getParameter("startDate"));
+                Date endDate = Date.valueOf(request.getParameter("endDate"));
+                Status status = Status.valueOf(request.getParameter("taskStatus"));
 
-            // Collecting parameter from form-body
-            String name = request.getParameter("name");
-            String description = request.getParameter("description");
-            Date startDate = Date.valueOf(request.getParameter("startDate"));
-            Date endDate = Date.valueOf(request.getParameter("endDate"));
-            Status status = Status.valueOf(request.getParameter("taskStatus"));
+                // Inserting data into database
+                ToDoDAO todoDAO = new ToDoDAO();
 
-            ToDoDAO todoDAO = new ToDoDAO();
+                todoDAO.insert(name, description, startDate, endDate, status);
 
-            todoDAO.insert(name, description, startDate, endDate, status);
+                // Alert message for successful task creation
+                request.getSession().setAttribute("success", "Task created successfully.");
 
-            response.sendRedirect("/");
+                response.sendRedirect("/");
+            }
+
+            // Alert message for unsuccessful operation
+            request.getSession().setAttribute("danger", "Please, fill the form appropriately.");
+
+            requestDispatcher.forward(request, response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
