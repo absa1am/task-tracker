@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <base>
@@ -21,13 +22,12 @@
         <!-- main section -->
         <div class="container mt-5 mb-5">
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 justify-content-center">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 justify-content-center">
                     <h2 class="text-center">My Strength</h2>
-
                     <canvas id="myChart"></canvas>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-lg-4"></div>
             </div>
         </div>
 
@@ -36,5 +36,40 @@
 
         <!-- scripts -->
         <%@include file="layouts/scripts.jsp"%>
+
+        <script>
+            var total = ${strength.get('Total')};
+            var pending = ${strength.get('Pending') * 100} / total;
+            var processing = ${strength.get('Processing') * 100} / total;
+            var completed = ${strength.get('Completed') * 100} / total;
+            var backlog = ${strength.get('Backlog') * 100} / total;
+
+            var xValues = ["Pending (%)", "Processing (%)", "Completed (%)", "Backlog (%)"];
+            var yValues = [pending, processing, completed, backlog];
+
+            var barColors = [
+                "#e8c3b9",
+                "#2b5797",
+                "#1e7145",
+                "#b91d47"
+            ];
+
+            new Chart("myChart", {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Strength Report"
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
