@@ -14,7 +14,17 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- URL mapping for to-do page -->
+    <!-- URL mapping for view to-do page -->
+    <servlet>
+        <servlet-name>ViewToDoServlet</servlet-name>
+        <servlet-class>com.dsinnovators.tasktracker.controllers.ViewToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewToDoServlet</servlet-name>
+        <url-pattern>/view-todo</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for add to-do page -->
     <servlet>
         <servlet-name>ToDoServlet</servlet-name>
         <servlet-class>com.dsinnovators.tasktracker.controllers.ToDoServlet</servlet-class>

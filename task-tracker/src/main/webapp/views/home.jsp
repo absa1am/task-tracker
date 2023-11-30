@@ -63,7 +63,7 @@
                                             <input type="hidden" name="id" class="form-control" value="${item.getId()}">
                                             <button type="submit" class="btn btn-outline-danger btn"><i class="bi bi-trash-fill"></i></button>
                                         </form>
-                                        <a class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a>
+                                        <a class="btn btn-outline-info" href="view-todo?id=${item.getId()}"><i class="bi bi-eye-fill"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
