@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DAO {
+public abstract class DAO {
 
     public Connection getConnection() throws SQLException, ClassNotFoundException, IOException {
         Properties properties = new Properties();
