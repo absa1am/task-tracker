@@ -8,7 +8,7 @@ Task tracker web app using JSP, Servlet and Java
 
 **Installation**
 1. Clone the repository
-2. Create a database called "jdbc" with username "postgres" and password "123456" if you want to run this project as it is, otherwise modify the configuration in DAO class.
+2. Configure the database in database.properties file
 3. Create a table:
     ```
     CREATE TABLE Tasks (
