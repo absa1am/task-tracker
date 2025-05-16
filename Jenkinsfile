@@ -16,8 +16,6 @@ pipeline {
             steps {
                 echo 'Deploying branch: main'
                 sh '''
-                    CATALINA_HOME=$(printenv CATALINA_HOME)
-                    echo "CATALINA_HOME = $CATALINA_HOME"
                     cp target/*.war $CATALINA_HOME/webapps/
                     $CATALINA_HOME/bin/startup.sh
                 '''
