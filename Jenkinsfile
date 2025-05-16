@@ -18,8 +18,6 @@ pipeline {
                 sh '''
                     chmod +x $CATALINA_HOME/bin/startup.sh
                     cp target/*.war $CATALINA_HOME/webapps/
-                    cd $CATALINA_HOME/bin/
-                    nohup ./catalina.sh start > /dev/null 2>&1 &
                 '''
             }
         }
