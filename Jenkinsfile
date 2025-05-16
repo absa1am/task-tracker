@@ -16,6 +16,7 @@ pipeline {
             steps {
                 echo 'Deploying branch: main'
                 sh '''
+                    chmod +x $CATALINA_HOME/bin/startup.sh
                     cp target/*.war $CATALINA_HOME/webapps/
                     $CATALINA_HOME/bin/startup.sh
                 '''
