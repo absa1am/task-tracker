@@ -5,7 +5,10 @@ pipeline {
         stage('build') {
             steps {
                 echo 'Building branch: main'
-                sh 'mvn clean package'
+                sh '''
+                    chmod +x ./mvnw
+                    ./mvnw clean package
+                '''
             }
         }
 
