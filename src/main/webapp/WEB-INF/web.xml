@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    
+    <listener>
+        <listener-class>com.absalam.tasktracker.config.ApplicationServletContextListener</listener-class>
+    </listener>
+
+    <!-- URL mapping for home page -->
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for view to-do page -->
+    <servlet>
+        <servlet-name>ViewToDoServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.ViewToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewToDoServlet</servlet-name>
+        <url-pattern>/view-todo</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for add to-do page -->
+    <servlet>
+        <servlet-name>ToDoServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.ToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ToDoServlet</servlet-name>
+        <url-pattern>/todo</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for edit to-do page -->
+    <servlet>
+        <servlet-name>EditToDoServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.EditToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditToDoServlet</servlet-name>
+        <url-pattern>/edit-todo</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for edit to-do page -->
+    <servlet>
+        <servlet-name>DeleteToDoServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.DeleteToDoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteToDoServlet</servlet-name>
+        <url-pattern>/delete-todo</url-pattern>
+    </servlet-mapping>
+    
+    <!-- URL mapping for login -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- URL mapping for registration -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.absalam.tasktracker.controllers.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+</web-app>
